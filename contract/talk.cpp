@@ -4,6 +4,7 @@
 struct [[eosio::table("message"), eosio::contract("talk")]] message {
     uint64_t    id       = {}; // Non-0
     uint64_t    reply_to = {}; // Non-0 if this is a reply
+    uint64_t    like     = {};
     eosio::name user     = {};
     std::string content  = {};
 
@@ -38,10 +39,11 @@ class talk : eosio::contract {
 
         // Record the message
         table.emplace(get_self(), [&](auto& message) {
-            message.id       = id;
-            message.reply_to = reply_to;
-            message.user     = user;
-            message.content  = content;
+          message.id       = id;
+          message.reply_to = reply_to;
+          message.user     = user;
+          message.content  = content;
+          message.like     = 0;
         });
     }
 };
