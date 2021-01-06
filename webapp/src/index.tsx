@@ -137,15 +137,15 @@ class Messages extends React.Component<{}, { content: string }> {
                     json: true, code: 'talk', scope: '', table: 'message', limit: 1000,
                 });
                 let content =
-                    'id          reply_to      user          content       like \n' +
+                    'id          reply_to      user          like        content        \n' +
                     '=================================================================\n';
                 for (let row of rows.rows)
                     content +=
                         (row.id + '').padEnd(12) +
                         (row.reply_to + '').padEnd(12) + '  ' +
                         row.user.padEnd(14) +
-                        row.content.padEnd(14) +
-                        row.like + '\n';
+                        row.like.padEnd(12) +
+                        row.content + '\n';
                 this.setState({ content });
             } catch (e) {
                 if (e.json)
