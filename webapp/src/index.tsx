@@ -144,7 +144,7 @@ class Messages extends React.Component<{}, { content: string }> {
                         (row.id + '').padEnd(12) +
                         (row.reply_to + '').padEnd(12) + '  ' +
                         row.user.padEnd(14) +
-                        row.like.padEnd(12) +
+                        (row.like + '').padEnd(12) +
                         row.content + '\n';
                 this.setState({ content });
             } catch (e) {
